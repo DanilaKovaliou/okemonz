@@ -1,4 +1,4 @@
-package com.example.diffutilrecylerview
+package com.example.okemonz
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -11,36 +11,52 @@ class MainActivity : AppCompatActivity() {
     private val PokemonAdapter by lazy { PokemonAdapter() }
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityMainBinding.inflate(layoutInflater)
-        enableEdgeToEdge()
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        enableEdgeToEdge()
 
-        PokemonAdapter.differ.submitList(loadData())
+
+        PokemonAdapter.differ.submitList(Repository.pokemons)
+
+
 
         binding.apply {
             rvCharacters.apply {
-                layoutManager=LinearLayoutManager(this@MainActivity)
-                adapter=PokemonAdapter
+                layoutManager = LinearLayoutManager(this@MainActivity)
+                adapter = PokemonAdapter
             }
+
         }
+
+
+
     }
-
-    fun loadData() : MutableList<SampleModel>{
-        val nameList : MutableList<SampleModel> = mutableListOf()
-        nameList.add(SampleModel(1, "Sample name"))
-        nameList.add(SampleModel(2, "Sample name"))
-        nameList.add(SampleModel(3, "Sample name"))
-        nameList.add(SampleModel(4, "Sample name"))
-        nameList.add(SampleModel(5, "Sample name"))
-        nameList.add(SampleModel(6, "Sample name"))
-        nameList.add(SampleModel(7, "Sample name"))
-
-
-
-        return nameList
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_main)
+//
+//        val button = findViewById<Button>(R.id.button1)
+//        button.setOnClickListener {
+//            val intent = Intent(this, SecondActivity::class.java).apply {
+//                putExtra("id", 1)
+//            }
+//            this.startActivity(intent)
+//        }
+//
+//
+//    }
 
 }
+
+
+
+
+
+
+
+
+
+
+

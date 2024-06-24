@@ -1,0 +1,1 @@
+посмотри ,пожалуйста MainActivity  and SecondActivity

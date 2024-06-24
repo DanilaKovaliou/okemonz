@@ -1,8 +1,7 @@
-package com.example.diffutilrecylerview
+package com.example.okemonz
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.graphics.alpha
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -12,12 +11,12 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
     private lateinit var binding: CharactersItemsBinding
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         binding= CharactersItemsBinding.inflate(LayoutInflater.from(parent.context),parent, false)
         return ViewHolder()
     }
 
-    override fun onBindViewHolder(holder: PokemonAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.setData(differ.currentList[position])
         holder.setIsRecyclable(false)
     }
@@ -28,7 +27,7 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root){
         fun setData(item : SampleModel){
             binding.apply {
-                profileImage.imageAlpha = item.id.alpha
+                profileImage.setImageResource(item.imageRes)
                 tvCharacterName.text = item.name
             }
         }
